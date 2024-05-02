@@ -26,7 +26,7 @@ function moveCharacter() {
         characterRight -= characterSpeed;
         character.style.right = characterRight + 'px';
     }
-    let maxBottom = groundBottom + 100; // for example, the character can go down 50px below the ground
+    let maxBottom = groundBottom + 100; 
 
     if (moveDown && characterBottom > maxBottom) {
         characterBottom -= characterSpeed;
@@ -59,7 +59,7 @@ function jump(){
                 if (characterBottom <= groundHeight + 10){
                     clearInterval(downTime);
                     isJumping = false;
-                    jumpCount = 0; // Reset jump count
+                    jumpCount = 0; 
                 }
                 characterBottom -= 8;
                 character.style.bottom = characterBottom + 'px';
@@ -96,13 +96,13 @@ function generateObstacle(imagePaths){
 
     // Create and position the image
     let image = document.createElement('img');
-    image.src = randomImagePath; // Replace 'path_to_your_image.jpg' with the actual path to your image
+    image.src = randomImagePath; 
     image.style.position = 'absolute';
-    image.style.width = 'fixed'; // Adjust width as needed
-    image.style.height = '230px'; // Adjust height as needed
+    image.style.width = 'fixed'; 
+    image.style.height = '230px'; 
     image.style.marginRight = '-65px';
-    image.style.righdwt = obstacleRight + 'px'; // Adjust position as needed
-    image.style.bottom = obstacleBottom + 'px'; // Adjust position as needed
+    image.style.righdwt = obstacleRight + 'px';
+    image.style.bottom = obstacleBottom + 'px'; 
     obstacles.appendChild(image);
 
     function moveObstacle(){
@@ -111,8 +111,8 @@ function generateObstacle(imagePaths){
         obstacle.style.bottom = obstacleBottom + 'px';
         obstacle.style.width = obstacleWidth + 'px';
         obstacle.style.height = obstacleHeight + 'px';
-        image.style.right = obstacleRight + 'px'; // Update image position
-        image.style.bottom = obstacleBottom + 'px'; // Update image position
+        image.style.right = obstacleRight + 'px'; 
+        image.style.bottom = obstacleBottom + 'px'; 
 
         
 
@@ -131,6 +131,8 @@ function generateObstacle(imagePaths){
         generateObstacle(imagePaths);
     }, randomTimeout);
 }
+
+//Obstacles GIF
 generateObstacle(
     ['assets/obstacles/obstacle-1.gif', 
     'assets/obstacles/obstacle-2.gif', 
@@ -142,6 +144,9 @@ generateObstacle(
     'assets/obstacles/obstacle-8.gif']);
 
 
+
+
+//CONTROL WASD
 function control(e) {
     console.log("Key pressed:", e.key);
     if (e.key === 'w' || e.key === 'W') {
