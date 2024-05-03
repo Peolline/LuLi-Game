@@ -116,12 +116,12 @@ function generateObstacle(imagePaths){
 
         
 
-        if(characterRight >= obstacleRight - characterWidth && characterRight <= obstacleRight + obstacleWidth && characterBottom <= obstacleBottom + obstacleHeight){
-            alert('Game Over! Your score is: ' +score);
-            clearInterval(obstacleInterval);
-            clearTimeout(obstacleTimeout);
-            location.reload();
-        }
+        // if(characterRight >= obstacleRight - characterWidth && characterRight <= obstacleRight + obstacleWidth && characterBottom <= obstacleBottom + obstacleHeight){
+        //     alert('Game Over! Your score is: ' +score);
+        //     clearInterval(obstacleInterval);
+        //     clearTimeout(obstacleTimeout);
+        //     location.reload();
+        // }
 
         
     }
