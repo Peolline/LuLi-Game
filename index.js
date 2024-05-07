@@ -1,3 +1,8 @@
+// const body = document.getElementById("game");
+// const ctx = body.getContext ("2d");
+// const GAME_WIDTH = 500;
+// const GAME_HEIGHT = 400;
+
 let charcter = document.getElementById('character');
 let characterBottom = parseInt(window.getComputedStyle(character).getPropertyValue('bottom'));
 let characterRight = parseInt(window.getComputedStyle(character).getPropertyValue('right'));
@@ -16,6 +21,39 @@ let upTime;
 let downTime;
 let displayScore = document.getElementById('score');
 let score = 0;
+
+// let scaleRatio = null;
+
+// function setScreen(){
+//     scaleRatio = getScaleRatio();
+//     body.width = GAME_WIDTH * scaleRatio;
+//     body.height = GAME_HEIGHT * scaleRatio;
+// }
+
+// function getScaleRatio(){
+//     const screenHeight = Math.min(
+//         window.innerHeight,
+//         document.documentElement.clientHeight
+//     );
+
+//     const screenWidth = Math.min(
+//         window.innerWidth,
+//         document.documentElement.clientWidth
+//     );
+
+//     if(screenWidth/ screenHeight < GAME_WIDTH/GAME_HEIGHT){
+//         return screenWidth/GAME_WIDTH;
+//     } else{
+//         return screenHeight/GAME_HEIGHT;
+//     }
+// }
+
+// setScreen();
+// window.addEventListener("resize", () => setTimeout(setScreen, 500));
+
+// if(screen.orientation){
+//     screen.orientation.addEventListener("change", setScreen);
+// }
 
 function moveCharacter() {
     if (moveLeft) {
