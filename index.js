@@ -20,6 +20,9 @@ let displayScore = document.getElementById('score');
 let score = 0;
 
 function moveCharacter() {
+    if (gameOver) {
+        return; // Don't show the score if the game is over
+    }
     if (moveLeft) {
         characterRight += characterSpeed;
         character.style.right = characterRight + 'px';
@@ -39,6 +42,9 @@ function moveCharacter() {
 
 
 function jump(){
+    if (gameOver) {
+        return; // Don't show the score if the game is over
+    }
     if (isJumping) {
         // Double jump
         if (jumpCount === 0) {
@@ -136,7 +142,20 @@ function generateObstacle(imagePaths){
             // Create a div element for the Game Over message
             var gameOverDiv = document.createElement("div");
             gameOverDiv.id = "gameOverDiv";
-            gameOverDiv.innerHTML = "Game Over! Your score is: " + score;
+            
+            var gameOverText = document.createElement("span");
+            gameOverText.innerHTML = "Luke Stumble Upon";
+            gameOverText.style.display = "block";
+            gameOverText.style.textAlign = "center";
+            gameOverText.style.fontSize = "38px";
+
+            // var additionalInfo = document.createElement("p");
+            // additionalInfo.innerHTML = "Your score is: " + score;
+            // additionalInfo.style.textAlign = "center";
+            // additionalInfo.style.fontSize = "15px"; 
+
+
+            gameOverDiv.appendChild(gameOverText);             
             gameOverDiv.style.position = "absolute";
             gameOverDiv.style.top = "50%";
             gameOverDiv.style.left = "50%";
@@ -144,14 +163,37 @@ function generateObstacle(imagePaths){
             gameOverDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
             gameOverDiv.style.color = "white";
             gameOverDiv.style.padding = "20px";
+            gameOverDiv.style.height = "400px";
+            gameOverDiv.style.width = "600px";
             gameOverDiv.style.borderRadius = "10px";
             gameOverDiv.style.zIndex = "1000";
+
+            var gameOverImageSrc = "";
+
+            switch (randomImagePath) {
+                case 'assets/obstacles/obstacle-1.gif':
+                    gameOverImageSrc = 'assets/Ending/Ending-1.png'; // Set appropriate image source
+                    break;
+                case 'assets/obstacles/obstacle-2.gif':
+                    gameOverImageSrc = 'assets/Ending/Ending-2.png'; // Set appropriate image source
+                    break;
+            }
+
+            var gameOverImage = document.createElement("img");
+            gameOverImage.src = gameOverImageSrc;
+            gameOverImage.style.display = "block";
+            gameOverImage.style.margin = "auto";
+            gameOverImage.style.maxWidth = "230px";
+            gameOverDiv.appendChild(gameOverImage);
         
             // Create a button for reloading the page
             var reloadButton = document.createElement("button");
             reloadButton.innerHTML = "Play Again";
-            reloadButton.style.display = "block";
-            reloadButton.style.margin = "20px auto";
+            // reloadButton.style.marginBottom = "300px"; 
+            reloadButton.style.position = "fixed";
+            reloadButton.style.top = "20px";
+            reloadButton.style.left = "20px";
+            reloadButton.style.zIndex = "1000";
             reloadButton.onclick = function() {
                 location.reload();
             };
@@ -162,17 +204,6 @@ function generateObstacle(imagePaths){
             // Append the Game Over div to the game container
             document.getElementById("gameContainer").appendChild(gameOverDiv);
         }
-        
-        
-
-        // if(characterRight >= obstacleRight - characterWidth && characterRight <= obstacleRight + obstacleWidth && characterBottom <= obstacleBottom + obstacleHeight){
-        //     alert('Game Over! Your score is: ' +score);
-        //     clearInterval(obstacleInterval);
-        //     clearTimeout(obstacleTimeout);
-        //     location.reload();
-        // }
-
-        
     }
     
     let obstacleInterval = setInterval(moveObstacle, 20);
