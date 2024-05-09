@@ -82,6 +82,10 @@ setInterval(showScore,100);
 
 
 function generateObstacle(imagePaths){
+    if (gameOver) {
+        return; // Don't generate obstacles if the game is over
+    }
+        
     let obstacles = document.querySelector('.obstacles');
     let obstacle = document.createElement('div');
     obstacle.setAttribute('class', 'obstacle');
@@ -156,7 +160,7 @@ function generateObstacle(imagePaths){
 
         
     }
-
+    
     let obstacleInterval = setInterval(moveObstacle, 20);
     let obstacleTimeout = setTimeout(function() {
         generateObstacle(imagePaths);
