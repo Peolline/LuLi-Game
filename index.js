@@ -74,6 +74,9 @@ function jump(){
 }
 
 function showScore(){
+    if (gameOver) {
+        return; // Don't show the score if the game is over
+    } 
     score++;
     displayScore.innerText = score;
 }
@@ -144,9 +147,20 @@ function generateObstacle(imagePaths){
             gameOverDiv.style.borderRadius = "10px";
             gameOverDiv.style.zIndex = "1000";
         
+            // Create a button for reloading the page
+            var reloadButton = document.createElement("button");
+            reloadButton.innerHTML = "Play Again";
+            reloadButton.style.display = "block";
+            reloadButton.style.margin = "20px auto";
+            reloadButton.onclick = function() {
+                location.reload();
+            };
+        
+            // Append the reload button to the Game Over div
+            gameOverDiv.appendChild(reloadButton);
+        
             // Append the Game Over div to the game container
             document.getElementById("gameContainer").appendChild(gameOverDiv);
-    
         }
         
         
