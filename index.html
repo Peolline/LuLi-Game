@@ -8,18 +8,21 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="game">
-    <div id="ground"></div>
-    <div id="character">
+    <div id="gameContainer">
+        <div id="ground"></div>
+        <div id="character">
         <img src="assets/character/character-1.gif" id="characterImg">
-    </div>
-    <div class="obstacles"></div>
-    <h2 class="scores">Score: <span id="score"></span></h2>
+        </div>
+        <div class="obstacles"></div>
+        <h2 class="scores">Score: <span id="score"></span></h2>
 
-    <!-- <div id="gameOver" class="GameOverWindow">
-        <h2>Game Over!</h2>
-        <p>Your score is: <span id="finalScore">0</span></p>
-        <button onclick="restartGame()">Restart</button>
-    </div> -->
+        <!-- <div id="gameOver" class="GameOverWindow">
+            <h2>Game Over!</h2>
+            <p>Your score is: <span id="finalScore">0</span></p>
+            <button onclick="restartGame()">Restart</button>
+        </div> -->
+    </div>
+    
     
 </body>
 <script src="index.js"></script>

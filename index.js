@@ -3,6 +3,8 @@
 // const GAME_WIDTH = 500;
 // const GAME_HEIGHT = 400;
 
+var gameOver = false;
+
 let charcter = document.getElementById('character');
 let characterBottom = parseInt(window.getComputedStyle(character).getPropertyValue('bottom'));
 let characterRight = parseInt(window.getComputedStyle(character).getPropertyValue('right'));
@@ -144,6 +146,9 @@ function generateObstacle(imagePaths){
     obstacles.appendChild(image);
 
     function moveObstacle(){
+
+        if (gameOver) return;
+
         obstacleRight += 5;
         obstacle.style.right = obstacleRight + 'px';
         obstacle.style.bottom = obstacleBottom + 'px';
@@ -152,6 +157,32 @@ function generateObstacle(imagePaths){
         image.style.right = obstacleRight + 'px'; 
         image.style.bottom = obstacleBottom + 'px'; 
 
+
+        if (characterRight >= obstacleRight - characterWidth && characterRight <= obstacleRight + obstacleWidth && characterBottom <= obstacleBottom + obstacleHeight) {
+            gameOver = true;
+            // Pause the game
+            clearInterval(obstacleInterval);
+            clearTimeout(obstacleTimeout);
+        
+            // Create a div element for the Game Over message
+            var gameOverDiv = document.createElement("div");
+            gameOverDiv.id = "gameOverDiv";
+            gameOverDiv.innerHTML = "Game Over! Your score is: " + score;
+            gameOverDiv.style.position = "absolute";
+            gameOverDiv.style.top = "50%";
+            gameOverDiv.style.left = "50%";
+            gameOverDiv.style.transform = "translate(-50%, -50%)";
+            gameOverDiv.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
+            gameOverDiv.style.color = "white";
+            gameOverDiv.style.padding = "20px";
+            gameOverDiv.style.borderRadius = "10px";
+            gameOverDiv.style.zIndex = "1000";
+        
+            // Append the Game Over div to the game container
+            document.getElementById("gameContainer").appendChild(gameOverDiv);
+    
+        }
+        
         
 
         // if(characterRight >= obstacleRight - characterWidth && characterRight <= obstacleRight + obstacleWidth && characterBottom <= obstacleBottom + obstacleHeight){
